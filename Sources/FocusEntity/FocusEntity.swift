@@ -141,7 +141,7 @@ open class FocusEntity: Entity, HasAnchoring, HasFocusEntity {
                 if stateChanged && self.anchor != nil {
                     self.anchoring = AnchoringComponent(.world(transform: Transform.identity.matrix))
                 }
-                if let planeAnchor = raycastResult.anchor as? ARPlaneAnchor {
+                if let planeAnchor = raycastResult.anchor as? ARPlaneAnchor, planeAnchor.alignment == .horizontal {
                     entityOnPlane(for: raycastResult, planeAnchor: planeAnchor)
                     currentPlaneAnchor = planeAnchor
                 } else {
